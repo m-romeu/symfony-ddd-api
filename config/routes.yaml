@@ -1,0 +1,9 @@
+createBike:
+    path: /bikes
+    controller: App\Infrastructure\Controller\CreateBikeController
+    methods: [POST]
+
+getBikeById:
+    path: /bikes/{id}
+    controller: App\Infrastructure\Controller\GetBikeByIdController
+    methods: [GET]
