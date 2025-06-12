@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\Infrastructure\Controller\CreateBikeController:
+    class: App\Infrastructure\Controller\CreateBikeController
+    tags: ['controller.service_arguments']
+
+  App\Infrastructure\Controller\GetBikeByIdController:
+    class: App\Infrastructure\Controller\GetBikeByIdController
+    tags: ['controller.service_arguments']
+
+  App\Infrastructure\Persistence\Doctrine\Repository\DoctrineBikeRepository:
+    class: App\Infrastructure\Persistence\Doctrine\Repository\DoctrineBikeRepository
+    arguments:
+      - 'App\Domain\Entity\Bike'
+
+      

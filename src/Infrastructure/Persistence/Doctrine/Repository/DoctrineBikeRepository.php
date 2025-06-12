@@ -8,7 +8,7 @@ use App\Domain\Entity\Bike;
 use App\Domain\Repository\BikeRepository;
 use Doctrine\ORM\EntityRepository;
 
-class DoctrineBikeRepository extends EntityRepository implements BikeRepository
+final class DoctrineBikeRepository extends EntityRepository implements BikeRepository
 {
     public function save(Bike $bike): void
     {

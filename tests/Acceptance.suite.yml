@@ -1,0 +1,31 @@
+# Codeception Acceptance Test Suite Configuration
+#
+# Perform tests in a browser by either emulating one using PhpBrowser, or in a real browser using WebDriver.
+# If you need both WebDriver and PhpBrowser tests, create a separate suite for each.
+
+actor: AcceptanceTester
+namespace: App\Tests
+modules:
+    enabled:
+        - PhpBrowser:
+            url: https://localhost:8000
+        - Symfony:
+            app_path: 'src/'
+            environment: 'test'
+            kernel_class: 'App\Kernel'
+            rebootable_client: true
+        - Doctrine:
+            depends: Symfony
+            cleanup: true
+        - REST:
+            part: JSON
+            url: /
+            depends: Symfony
+        - Asserts
+        - App\Tests\Support\Helper\AcceptanceHelper
+    
+# Add Codeception\Step\Retry trait to AcceptanceTester to enable retries
+step_decorators:
+    - Codeception\Step\ConditionalAssertion
+    - Codeception\Step\TryTo
+    - Codeception\Step\Retry

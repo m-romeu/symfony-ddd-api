@@ -32,7 +32,11 @@ RUN docker-php-ext-enable xdebug
 COPY rootfs /
 
 RUN mkdir -p /app && \
-    echo '' > /app/.env
+    echo '' > /app/.env  
+
+RUN mkdir -p /app/var && \
+    chown -R www-data:www-data /app && \
+    chmod -R 775 /app/var    
 
 ENV APACHE_NO_ACCESS_LOG=true COMPOSER_ALLOW_SUPERUSER=1
 
