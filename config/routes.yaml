@@ -7,3 +7,18 @@ getBikeById:
     path: /bikes/{id}
     controller: App\Infrastructure\Controller\GetBikeByIdController
     methods: [GET]
+
+getBikes:
+    path: /bikes
+    controller: App\Infrastructure\Controller\GetBikesController
+    methods: [GET]    
+
+updateBike:
+    path: /bikes/{id}
+    controller: App\Infrastructure\Controller\UpdateBikeController
+    methods: [PUT]
+
+deleteBike:
+    path: /bikes/{id}
+    controller: App\Infrastructure\Controller\DeleteBikeController
+    methods: [DELETE]    

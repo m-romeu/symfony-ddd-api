@@ -5,3 +5,6 @@ services:
 
   App\Application\Command\:
     resource: '%kernel.project_dir%/src/Application/Command/*Handler.php'
+
+  App\Application\Query\:
+    resource: '%kernel.project_dir%/src/Application/Query/*Handler.php'  

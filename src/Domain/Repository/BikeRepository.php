@@ -9,4 +9,8 @@ use App\Domain\Entity\Bike;
 interface BikeRepository
 {
     public function save(Bike $bike): void;
+
+    public function getBikeById(int $bikeId): ?Bike;
+
+    public function getBikes(): array;
 }

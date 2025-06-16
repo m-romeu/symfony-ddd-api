@@ -6,8 +6,8 @@ namespace App\Infrastructure\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Application\Command\CreateBikeCommand;
-use App\Application\Command\CreateBikeCommandHandler;
+use App\Application\Query\GetBikeByIdQuery;
+use App\Application\Query\GetBikeByIdQueryHandler;
 
 class GetBikeByIdController extends BaseController
 {
@@ -15,9 +15,11 @@ class GetBikeByIdController extends BaseController
     {
     }
 
-    public function __invoke(Request $request, CreateBikeCommandHandler $createBikeCommandHandler): Response
+    public function __invoke(Request $request, GetBikeByIdQueryHandler $getBikeByIdQueryHandler): Response
     {
-        return $this->sendOK([]);
+        $query = new GetBikeByIdQuery((int) $request->get('id'));
+
+        return $this->sendOK($getBikeByIdQueryHandler->__invoke($query));
     }
 
 }

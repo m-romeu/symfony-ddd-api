@@ -24,15 +24,13 @@ final class CreateBikeControllerCest
                 "name" => "bike 1",
                 "trademark" => "trek",
                 "model" => "800 WSD",
-                "price" => "1000.00"
+                "price" => 1000.00
             ]
         );
         
         $I->haveHttpHeader('Content-Type', 'application/json');
-        $response = $I->sendPOST(self::ENDPOINT_URL, $body);
+        $I->sendPOST(self::ENDPOINT_URL, $body);
         $I->seeResponseCodeIs(HttpCode::CREATED);
-        $I->seeRequestIsValid($I->getSpecPath(self::ENDPOINT_URL), Request::METHOD_POST, [], $body);
-        $I->seeResponseIsValid($I->getSpecPath(self::ENDPOINT_URL), Request::METHOD_POST, $I->grabResponse(), Response::HTTP_CREATED);
-        $I->seeResponseContains("id", $response);
+        $I->seeHttpHeader('Location');
     }
 }

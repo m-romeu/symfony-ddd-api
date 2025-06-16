@@ -17,15 +17,16 @@ class CreateBikeController extends BaseController
 
     public function __invoke(Request $request, CreateBikeCommandHandler $createBikeCommandHandler): Response
     {
-        
+        $parameters = json_decode($request->getContent(), true);
+
         $command = new CreateBikeCommand(
-            $request->get('name'),
-            $request->get('trademark'),
-            $request->get('model'),
-            $request->get('price')
+            $parameters['name'],
+            $parameters['trademark'],
+            $parameters['model'],
+            $parameters['price']
         );
 
-        $lastBikeId = $createBikeCommandHandler->__invoke($command);
+        $lastBikeId = $createBikeCommandHandler->__invoke($command); 
 
         return $this->sendCreated($this->generateUrl('getBikeById',['id' => $lastBikeId]));
     }

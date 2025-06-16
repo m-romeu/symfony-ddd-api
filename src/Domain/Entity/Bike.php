@@ -57,9 +57,40 @@ class Bike
         return $this->updatedAt;
     }
 
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function setTrademark(string $trademark): void
+    {
+        $this->trademark = $trademark;
+    }
+
+    public function setModel(string $model): void
+    {
+        $this->model = $model;
+    }
+
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
     public function setUpdatedAt(): void
     {
         $this->updatedAt = new DateTime();
+    }
+
+    public function toArray(): array
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "trademark" => $this->trademark,
+            "model" => $this->model,
+            "price" => $this->price,
+        ];
     }
 
 }

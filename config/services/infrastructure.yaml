@@ -11,9 +11,23 @@ services:
     class: App\Infrastructure\Controller\GetBikeByIdController
     tags: ['controller.service_arguments']
 
+  App\Infrastructure\Controller\GetBikesController:
+    class: App\Infrastructure\Controller\GetBikesController
+    tags: ['controller.service_arguments'] 
+
+  App\Infrastructure\Controller\UpdateBikeController:
+    class: App\Infrastructure\Controller\UpdateBikeController
+    tags: ['controller.service_arguments']   
+
   App\Infrastructure\Persistence\Doctrine\Repository\DoctrineBikeRepository:
     class: App\Infrastructure\Persistence\Doctrine\Repository\DoctrineBikeRepository
-    arguments:
-      - 'App\Domain\Entity\Bike'
+    factory: ["@doctrine", getRepository]
+    arguments: ["App\\Domain\\Entity\\Bike"]
+
+  App\Infrastructure\Persistence\Doctrine\DataFixtures\:
+    resource: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/DataFixtures'
+    tags:
+      - 'doctrine.fixture.orm'
+  
 
       
