@@ -34,5 +34,8 @@ final class UpdateBikeControllerCest
         $response = $I->sendPUT($url, $body);
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseContains("new bike name", $response);
+        $I->seeRequestIsValid($I->getSpecPath($url), Request::METHOD_PUT, [], $body);
+        $I->seeResponseIsValid($I->getSpecPath($url), Request::METHOD_PUT, $I->grabResponse(), Response::HTTP_OK);
+
     }
 }

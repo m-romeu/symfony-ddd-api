@@ -1,0 +1,58 @@
+get:
+  tags:
+    - Bike
+  summary: Get one bike
+  description: Get one bike
+  operationId: getBikeById
+  parameters:
+    - name: id
+      in: path
+      description: The Unique ID of the bike to retrieve
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bike.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Problem.yaml
+put:
+  tags:
+    - Bike
+  summary: Update a bike
+  description: Update a bike
+  operationId: updateBike
+  parameters:
+  - name: id
+    in: path
+    description: The Unique ID of the bike to update
+    required: true
+    schema:
+      type: integer
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/bike.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bike.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Problem.yaml
+

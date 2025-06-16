@@ -1,0 +1,24 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: API
+  termsOfService: https://example.com/terms/
+  contact:
+    url: http://example.com/contact
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: 'https://{tenant}/api'
+    variables:
+      tenant:
+        default: api.example.com
+        description: Your server host
+tags:
+  - name: Bike
+    description: Bike operations
+paths:
+  /bikes:
+    $ref: paths/bikes.yaml
+  /bikes/{id}:
+    $ref: paths/bikes_id.yaml

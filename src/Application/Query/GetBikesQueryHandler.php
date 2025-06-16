@@ -17,7 +17,13 @@ class GetBikesQueryHandler
     {
         $bikes = $this->bikeRepository->getBikes();
 
-        return $bikes;
+        $bikeList = [];
+
+        foreach ($bikes as $bike) {
+            $bikeList[] = $bike->toArray();
+        }
+
+        return $bikeList;
     }
 }
 

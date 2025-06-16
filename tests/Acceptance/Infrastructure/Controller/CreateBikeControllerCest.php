@@ -31,6 +31,8 @@ final class CreateBikeControllerCest
         $I->haveHttpHeader('Content-Type', 'application/json');
         $I->sendPOST(self::ENDPOINT_URL, $body);
         $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeRequestIsValid($I->getSpecPath(self::ENDPOINT_URL), Request::METHOD_POST, [], $body);
+        $I->seeResponseIsValid($I->getSpecPath(self::ENDPOINT_URL), Request::METHOD_POST, $I->grabResponse(), Response::HTTP_CREATED);
         $I->seeHttpHeader('Location');
     }
 }

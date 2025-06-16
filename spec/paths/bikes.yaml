@@ -1,0 +1,46 @@
+get:
+  tags:
+    - Bike
+  summary: Get a list of bikes
+  description: Get a list of bikes
+  operationId: getBikes
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bike_list.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Problem.yaml
+post:
+  tags:
+    - Bike
+  summary: Create a new bike
+  description: Create a new bike
+  operationId: createBike
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/bike.yaml
+  responses:
+    '201':
+      description: Created
+      headers:
+        Location:
+          description: The location of the new bike
+          schema:
+            type: string
+            format: uri
+            example: /bikes/1
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Problem.yaml

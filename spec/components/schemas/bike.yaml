@@ -1,0 +1,32 @@
+type: object
+required:
+  - name
+  - trademark
+  - model
+  - price
+properties:
+  id:
+    type: integer
+    description: identifier
+    readOnly: true
+    nullable: true
+  name:
+    type: string
+    description: Bike name
+    maxLength: 255
+  trademark:
+    type: string
+    description: Bike trademark
+    maxLength: 255
+  model:
+    type: string
+    description: Bike model
+    maxLength: 255
+  price:
+    type: number
+    format: float
+    description: Bike price    
+  createdAt:
+    $ref: ../common/iso_timestamp.yaml
+  updatedAt:
+    $ref: ../common/iso_timestamp.yaml

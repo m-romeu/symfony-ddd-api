@@ -7,6 +7,8 @@ namespace App\Tests\Acceptance\Infrastructure\Controller;
 use App\Infrastructure\Persistence\Doctrine\DataFixtures\BikeFixtures;
 use App\Tests\Support\AcceptanceTester;
 use Codeception\Util\HttpCode;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 final class GetBikeByIdControllerCest
 {
@@ -25,6 +27,8 @@ final class GetBikeByIdControllerCest
         $I->haveHttpHeader('Content-Type', 'application/json');
         $response = $I->sendGET($url);
         $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeRequestIsValid($I->getSpecPath($url), Request::METHOD_GET);
+        $I->seeResponseIsValid($I->getSpecPath($url), Request::METHOD_GET, $I->grabResponse(), Response::HTTP_OK);
         $I->seeResponseIsJson();
         $I->seeResponseContains(BikeFixtures::FIXTURE_BIKE_NAME, $response);
     }

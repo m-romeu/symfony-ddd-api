@@ -27,7 +27,7 @@ class UpdateBikeController extends BaseController
             $parameters['price']
         );
 
-        return $this->sendOK([$updateBikeCommandHandler->__invoke($command)]);
+        return $this->sendOK($updateBikeCommandHandler->__invoke($command));
     }
 
 }

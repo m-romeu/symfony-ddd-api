@@ -1,0 +1,10 @@
+type: string
+format: date-time
+description: |
+  ISO 0801 Timestamp. 
+  CreatedAt and UpdatedAt are system managed values and will be ignored 
+  if sent in request parameters
+example: 2025-12-22T12:44:18+01:00
+title: ISO Timestamp
+readOnly: true
+nullable: true

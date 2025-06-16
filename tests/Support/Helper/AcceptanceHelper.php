@@ -14,7 +14,6 @@ use Psr\Http\Message\ResponseInterface;
 use League\OpenAPIValidation\PSR7\OperationAddress;
 use League\OpenAPIValidation\PSR7\ValidatorBuilder;
 use cebe\openapi\Reader;
-use Webmozart\Assert\Assert;
 use InvalidArgumentException;
 
 final class AcceptanceHelper extends Module
@@ -25,11 +24,6 @@ final class AcceptanceHelper extends Module
     public function getSpecPath(string $url): string
     {
         return self::SPEC_PATH_PREFIX . $url;
-    }
-
-    public function assertStringIsUuid(string $id): void
-    {
-         Assert::uuid($id, sprintf('Value %s is not a valid UUID4', $id));
     }
 
     public function seeRequestIsValid(
