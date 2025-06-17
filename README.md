@@ -104,6 +104,6 @@ This project is an implementation of a Domain-Driven Design (DDD) architecture u
 To run the tests, use the following command:
 
 ```bash
-php bin/phpunit
+./vendor/bin/codecept run
 ```
 
